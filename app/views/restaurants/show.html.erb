@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3 col-6">
+      <h3><%= @restaurant.name %></h3>
+      <p><b>Address:</b> <%= @restaurant.address %></p>
+      <p><b>Category:</b> <%= @restaurant.category %></p>
+      <p><b>Phone:</b> <%= @restaurant.phone_number %></p>
+
+      <h5 class="pt-4 pb-2"><strong>Reviews:</strong></h5>
+      <ul class="">
+      <% @restaurant.reviews.each do  |review| %>
+        <li class="d-flex justify-content-between"><p class="font-italic text-muted"> -- <%= review.content %></p><p><%="⭐️"*review.rating%></p></li>
+      <% end %>
+      </ul>
+      <div class="d-flex justify-content-between">
+        <%= link_to "Back to list", restaurants_path, class: "btn btn-primary" %>
+        <%= link_to "Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+</div>
